@@ -1,9 +1,12 @@
+import { Permissions } from "./auth";
+
 export interface AuthenticatedUser {
   id: string;
   name: string;
   email: string;
   token: string;
   refreshToken: string;
+  permissions: Permissions;
 }
 
 // Omit - removes the specified keys from the type

@@ -3,7 +3,7 @@
 This repository applying and explain the concepts of hexagonal architecture
 The main services are:
 
-- API
+- Dashboard API
 - DB
 - Control Plane
 - FrontEnd

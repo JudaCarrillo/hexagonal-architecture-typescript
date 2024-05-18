@@ -13,4 +13,8 @@ export interface AuthenticatedUser {
 // export type User = Omit<AuthenticatedUser, "id" | "token" | "refreshToken">;
 
 // Pick - picks the specified keys from the type
-export type User = Pick<AuthenticatedUser, "email" | "name">;
+// export type User = Pick<AuthenticatedUser, "email" | "name">;
+
+export interface User extends Pick<AuthenticatedUser, "email" | "name"> {
+  password: string;
+}

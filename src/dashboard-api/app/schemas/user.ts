@@ -7,9 +7,17 @@ import { PermissionsSchema } from "./auth";
 // * Pick - picks the specified keys from the type
 // export type User = Pick<AuthenticatedUser, "email" | "name">;
 
+export const RegisterSchema = z.object({
+  email: z.string().email("Invalid email"),
+  name: z.string(),
+  password: z.string().min(6),
+  isAdmin: z.boolean(),
+  isUser: z.boolean(),
+});
+
 export const AuthenticatedUserSchema = z.object({
   id: z.string(),
-  name: z.string().email('Invalid email'),
+  name: z.string().email("Invalid email"),
   email: z.string(),
   token: z.string(),
   refreshToken: z.string(),

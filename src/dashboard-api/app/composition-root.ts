@@ -1,13 +1,15 @@
+import { authDetailsProxy } from "../../control-plane/app/composition-root";
 import { userManagerProxy } from "../../repository/app/composition-root";
 import { ControlAuthenticatorStub, RepoQuerierStub } from "../adapters/drivens";
 import { AuthenticatorProxyAdapter } from "../adapters/drivers";
 import { DashboardApi } from "./dashboard-api";
 
 const compositionMock = () => {
-
-  // * DASHBOARD API 
+  // * DASHBOARD API
   const repoQuerierStub = new RepoQuerierStub(userManagerProxy); // dependency injection
-  const controlAuthenticatorStub = new ControlAuthenticatorStub();
+  const controlAuthenticatorStub = new ControlAuthenticatorStub(
+    authDetailsProxy
+  );
 
   const dashboardApiMock = new DashboardApi(
     controlAuthenticatorStub,
@@ -32,4 +34,4 @@ const registerMock = {
 };
 
 authenticatorProxyAdapter.register(registerMock);
-// authenticatorProxyAdapter.login("jhon@gmail.com", "123456");
+authenticatorProxyAdapter.login("juda@gmail.com", "123456");

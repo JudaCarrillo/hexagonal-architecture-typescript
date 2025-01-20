@@ -11,9 +11,7 @@ export class ControlPlane implements ForManagingAuthDetails {
     private readonly repoQuerier: ForRepoQuerying
   ) {}
 
-  async getAuthDetails(email: string, password: string): Promise<AuthDetails> {
-    console.log("GET AUTH DETAILS");
-    
+  async getAuthDetails(email: string, password: string): Promise<AuthDetails> {    
 
     const token = this.generateTokens.execute({
       email,

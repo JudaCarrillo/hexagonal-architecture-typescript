@@ -6,8 +6,6 @@ export class AuthenticatorProxyAdapter implements ForAuthenticating {
   constructor(private readonly dashboardApi: DashboardApi) {}
 
   async login(email: string, password: string): Promise<AuthenticatedUser> {
-    console.log("AuthenticatorProxyAdapter.login");
-    
     return this.dashboardApi.login(email, password);
   }
   async register(user: User): Promise<AuthenticatedUser> {

@@ -1,43 +1,74 @@
-# hexagonal-architecture-typescript
+# Hexagonal Architecture with TypeScript
 
-This repository applying and explain the concepts of hexagonal architecture
-The main services are:
+This repository demonstrates and explains the concepts of Hexagonal Architecture.
 
-- Dashboard API
-- DB
-- Control Plane
-- FrontEnd
+## Main Services:
 
-The interaction between services born from request of login, this execute a primary action this action interact with Control Plane and DB services through are adapters
+- **Dashboard API**
+- **Repository (DB)**
+- **Control Plane**
 
-Recommendations at the moment to define the work flow of a services:
-Identify ...
-1. what are the entry triggers?
-2. what are the main ports?
+### Service Interaction
 
-I follow the following nomenclature:
-If it's a driver:
-for - "what needs to be done?" 
+The interaction between services begins with a login request. This triggers a primary action that interacts with the **Control Plane** and **DB** services through adapters.
 
-Example:
-for - authenticating
-    - logging
-    - register
-  
-bad practices:
-for - authenticating 
-for - logging
-for - register
+### Key Points
 
-In the first example I englobe the methods in a one action (ports).
-In the second example I created as many ports as actions.
+- Ports define and limit the scope of actions.
+- For the port "authenticating," an adapter "authenticator" is required. This might involve creating proxies.
 
-Important:
-Let us remember that the port limits our actions.
+### Design Patterns
 
-Back to the topic..
-This port "authenticating" needed a adapter "authenticator", for this I need to create proxies
+- **[Proxy Design Pattern](https://refactoring.guru/design-patterns/proxy):** A structural pattern that provides a surrogate or placeholder to control access to an object.
+- **[Adapter Design Pattern](https://refactoring.guru/design-patterns/adapter):** A structural pattern that bridges the gap between two incompatible interfaces, enabling them to work together seamlessly.
 
-Design Pattern "Proxy":
-url of pattern
+### Additional Information
 
+- **Security Tokens:**  
+  JSON Web Tokens (JWT) are used for generating **security** tokens. These facilitate communication between services (hexagons).
+
+- **Tools and **Frameworks**:**  
+  The repository implements **tRPC** for communication and documentation via the tRPC panel.
+
+### Running the Project Locally with tRPC
+
+To run the project locally with tRPC, follow these steps:
+
+#### Setup Instructions
+
+1. **Clone the Repository**  
+   If you haven't already, clone the repository to your local machine:
+
+   ```bash
+   git clone https://github.com/JudaCarrillo/hexagonal-architecture-typescript
+   cd hexagonal-architecture-typescript
+   ```
+
+2. **Install Dependencies**  
+   Run the following command to install all necessary dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. **Start the Server**  
+   To start the server locally, run:
+
+   ```bash
+   cd src/dashboard-api
+   ```
+
+   ```bash
+   npm run dev
+   ```
+
+   The server will be running at `http://localhost:3000`.
+
+4. **Access the tRPC Panel**  
+   Once the server is running, you can access the tRPC panel by visiting:
+
+   ```bash
+   http://localhost:3000/panel
+   ```
+
+   This will open a visual interface to interact with your tRPC API.
